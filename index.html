@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RandomVerse ✨ The Ultimate Random Web Experience</title>
+  <meta name="description" content="An interactive cybernetic playground of procedural generators, synth audio, mini-games, and canvas physics." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800;900&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://studio.qesten.com/c.js" data-site="nidhipstudio" defer></script>
+</head>
+<body>
+  <!-- Interactive Particle Background Canvas -->
+  <canvas id="bg-canvas"></canvas>
+
+  <div class="app-container">
+    <!-- Header / Navbar -->
+    <header class="navbar">
+      <div class="brand">
+        <span class="brand-icon">⚡</span>
+        <span class="brand-title">RANDOM<span class="neon-text">VERSE</span></span>
+        <span class="version-tag">v2.5 // LIVE</span>
+      </div>
+      <div class="nav-controls">
+        <button id="audio-toggle-btn" class="nav-btn" title="Toggle Synthesizer SFX">
+          <span class="icon">🔊</span>
+          <span class="label">AUDIO ON</span>
+        </button>
+        <button id="theme-dice-btn" class="nav-btn primary-glow" title="Randomize Atmosphere">
+          <span class="icon">🎲</span>
+          <span class="label">RANDOM VIBE</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <main class="main-content">
+      <section class="hero-section">
+        <div class="hero-badge">✦ PROCEDURAL CYBER PLAYGROUND ✦</div>
+        <h1 class="hero-title">Step Into The Realm Of <span class="gradient-text glitch-text" data-text="Pure Chance">Pure Chance</span></h1>
+        <p class="hero-desc">
+          An interactive laboratory of synthesized soundwaves, real-time particle dynamics, instant color alchemy, persona generators, and reflex arcade trials.
+        </p>
+
+        <!-- Quick Random Oracle -->
+        <div class="oracle-container glass-card">
+          <div class="oracle-header">
+            <span class="pill">COSMIC ORACLE</span>
+            <span class="oracle-seed" id="oracle-seed">SEED #84920</span>
+          </div>
+          <p class="oracle-quote" id="oracle-quote">"Loading universal wisdom..."</p>
+          <div class="oracle-actions">
+            <button id="new-oracle-btn" class="action-btn">
+              <span>🔮 Reveal Next Truth</span>
+            </button>
+            <button id="copy-quote-btn" class="secondary-btn" title="Copy to clipboard">
+              📋 Copy
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Feature Grid -->
+      <section class="features-grid">
+        <!-- Module 1: Cyber Reflex Arcade -->
+        <div class="feature-card glass-card span-2" id="arcade-module">
+          <div class="card-header">
+            <div>
+              <span class="pill neon-pill">MINI-GAME</span>
+              <h2 class="card-title">Neon Surge Reflex Test</h2>
+            </div>
+            <div class="stats-badge">
+              <span>HIGH SCORE: <strong id="high-score-val">0</strong></span>
+            </div>
+          </div>
+          <div class="game-wrapper">
+            <canvas id="game-canvas" width="600" height="260"></canvas>
+            <div id="game-overlay" class="game-overlay">
+              <div class="overlay-box">
+                <h3 id="overlay-title">NEON SURGE</h3>
+                <p id="overlay-desc">Click/tap targets before they detonate! Test your synaptic reaction speed.</p>
+                <button id="start-game-btn" class="play-btn">START GAME</button>
+              </div>
+            </div>
+          </div>
+          <div class="game-footer">
+            <div class="game-status">
+              <span>SCORE: <b id="current-score-val">0</b></span>
+              <span>TIME LEFT: <b id="game-timer-val">30s</b></span>
+            </div>
+            <span class="game-tip">💡 Fast streaks trigger multiplier sound effects!</span>
+          </div>
+        </div>
+
+        <!-- Module 2: Color Palette Alchemy -->
+        <div class="feature-card glass-card">
+          <div class="card-header">
+            <div>
+              <span class="pill">COLOR ALCHEMY</span>
+              <h2 class="card-title">Random Palette Generator</h2>
+            </div>
+            <button id="gen-palette-btn" class="dice-btn" title="Generate New Palette">🎲</button>
+          </div>
+          <p class="card-subtitle">Click any color swatch to copy its HEX value.</p>
+          <div class="palette-display" id="palette-display">
+            <!-- 5 Dynamic Swatches injected by JS -->
+          </div>
+          <div class="palette-footer">
+            <button id="copy-css-gradient-btn" class="action-btn full-width">
+              <span>🎨 Copy CSS Gradient</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Module 3: Procedural Web Audio Synth Pad -->
+        <div class="feature-card glass-card">
+          <div class="card-header">
+            <div>
+              <span class="pill">SYNTHWAVE LAB</span>
+              <h2 class="card-title">Polyphonic Sound Synth</h2>
+            </div>
+            <span class="tech-badge">Web Audio API</span>
+          </div>
+          <p class="card-subtitle">Play retro synthesized waveforms right in your browser.</p>
+          <div class="synth-pads-grid">
+            <button class="synth-pad" data-sound="laser">
+              <span class="pad-icon">⚡</span>
+              <span class="pad-name">Laser Zap</span>
+            </button>
+            <button class="synth-pad" data-sound="bass">
+              <span class="pad-icon">🔊</span>
+              <span class="pad-name">Cyber Bass</span>
+            </button>
+            <button class="synth-pad" data-sound="arpeggio">
+              <span class="pad-icon">🎶</span>
+              <span class="pad-name">Arpeggio</span>
+            </button>
+            <button class="synth-pad" data-sound="warp">
+              <span class="pad-icon">🌌</span>
+              <span class="pad-name">Hyperspace</span>
+            </button>
+            <button class="synth-pad" data-sound="powerup">
+              <span class="pad-icon">🚀</span>
+              <span class="pad-name">Power Up</span>
+            </button>
+            <button class="synth-pad" data-sound="glitch">
+              <span class="pad-icon">👾</span>
+              <span class="pad-name">8-Bit Glitch</span>
+            </button>
+          </div>
+          <div class="synth-controls">
+            <button id="random-sound-btn" class="secondary-btn full-width">
+              🔀 Compose Random Chiptune
+            </button>
+          </div>
+        </div>
+
+        <!-- Module 4: Cyber Persona / Character Generator -->
+        <div class="feature-card glass-card">
+          <div class="card-header">
+            <div>
+              <span class="pill">LORE FORGE</span>
+              <h2 class="card-title">Cyberpunk Identity Forge</h2>
+            </div>
+            <button id="gen-persona-btn" class="dice-btn" title="Reroll Persona">🎲</button>
+          </div>
+          <div class="persona-card" id="persona-card">
+            <div class="persona-avatar" id="persona-avatar">🦾</div>
+            <div class="persona-info">
+              <h3 class="persona-name" id="persona-name">Nova "Ghost" Sterling</h3>
+              <p class="persona-role" id="persona-role">Level 4 Neural Cryptographer</p>
+              <div class="persona-tags" id="persona-tags">
+                <span class="tag">Sector 7</span>
+                <span class="tag">Augmented</span>
+                <span class="tag">Night Owl</span>
+              </div>
+            </div>
+          </div>
+          <div class="persona-stats" id="persona-stats">
+            <!-- Stat bars injected by JS -->
+          </div>
+        </div>
+
+        <!-- Module 5: Activity & Quest Generator -->
+        <div class="feature-card glass-card">
+          <div class="card-header">
+            <div>
+              <span class="pill">BOREDOM BUSTER</span>
+              <h2 class="card-title">Daily Micro-Quests</h2>
+            </div>
+            <button id="gen-quest-btn" class="dice-btn" title="New Quest">🎲</button>
+          </div>
+          <div class="quest-box" id="quest-box">
+            <div class="quest-type" id="quest-type">CREATIVE EXPEDITION</div>
+            <h3 class="quest-title" id="quest-title">"Design a fictional corporate logo for a martian water monopoly."</h3>
+            <div class="quest-meta">
+              <span>⏳ Difficulty: <b id="quest-diff">Medium</b></span>
+              <span>⭐ Reward: <b id="quest-xp">+250 XP</b></span>
+            </div>
+          </div>
+          <button id="complete-quest-btn" class="action-btn full-width">
+            <span>✨ Complete Quest & Claim Karma</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- Particle Playground Controls -->
+      <section class="particle-controls glass-card">
+        <div class="controls-info">
+          <h3>Interactive Kinetic Universe</h3>
+          <p>Click anywhere to create energetic shockwaves. Drag to attract the quantum particle swarm.</p>
+        </div>
+        <div class="controls-actions">
+          <button id="scatter-particles-btn" class="secondary-btn">💥 Supernova Burst</button>
+          <button id="gravity-toggle-btn" class="secondary-btn">🧲 Gravity: Attract</button>
+          <button id="reset-particles-btn" class="secondary-btn">🔄 Reset Swarm</button>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+      <div class="footer-content">
+        <p>Built with pure HTML5, CSS3, & Web Audio API • 100% Client-Side • Ultra-Fast</p>
+        <p class="footer-sub">Ready to deploy with GitHub Pages or static host.</p>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Toast Notification System -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
